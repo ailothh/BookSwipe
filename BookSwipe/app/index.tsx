@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 
 export default function LoginScreen() {
@@ -11,10 +12,15 @@ export default function LoginScreen() {
   };
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <View style={styles.hero}>
+    <LinearGradient
+      colors={['#FF6B35', '#F7931E', '#FFB347']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.gradientContainer}>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <View style={styles.hero}>
         <Text style={styles.badge}>BookSwipe</Text>
         <Text style={styles.title}>Sign in with your phone</Text>
         <Text style={styles.subtitle}>
@@ -42,16 +48,21 @@ export default function LoginScreen() {
       </View>
 
       <Text style={styles.disclaimer}>
-        We’ll text a one-time code. Standard messaging rates apply.
+        We'll text a one-time code. Standard messaging rates apply.
       </Text>
     </KeyboardAvoidingView>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
+  gradientContainer: {
+    flex: 1,
+    width: '100%',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#0F172A',
+    backgroundColor: 'transparent',
     paddingHorizontal: 20,
     paddingTop: 80,
   },
@@ -61,8 +72,8 @@ const styles = StyleSheet.create({
   },
   badge: {
     alignSelf: 'flex-start',
-    backgroundColor: 'rgba(34,211,238,0.15)',
-    color: '#22D3EE',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    color: '#FFFFFF',
     paddingVertical: 8,
     paddingHorizontal: 14,
     borderRadius: 12,
@@ -70,25 +81,30 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   title: {
-    color: '#F8FAFC',
+    color: '#FFFFFF',
     fontSize: 30,
     fontWeight: '800',
   },
   subtitle: {
-    color: '#94A3B8',
+    color: 'rgba(255, 255, 255, 0.9)',
     fontSize: 15,
     lineHeight: 22,
   },
   card: {
-    backgroundColor: '#0B1224',
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
     borderRadius: 16,
     padding: 16,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: 'rgba(255,255,255,0.3)',
     gap: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 4,
   },
   label: {
-    color: '#E2E8F0',
+    color: '#0F172A',
     fontWeight: '700',
     fontSize: 14,
   },
@@ -99,34 +115,34 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 12,
     borderRadius: 12,
-    backgroundColor: '#111827',
+    backgroundColor: '#F8FAFC',
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: 'rgba(0,0,0,0.1)',
   },
   prefix: {
-    color: '#94A3B8',
+    color: '#64748B',
     fontSize: 16,
     fontWeight: '700',
   },
   input: {
     flex: 1,
-    color: '#F8FAFC',
+    color: '#0F172A',
     fontSize: 16,
   },
   button: {
     marginTop: 6,
-    backgroundColor: '#22D3EE',
+    backgroundColor: '#FF6B35',
     borderRadius: 14,
     paddingVertical: 14,
     alignItems: 'center',
   },
   buttonText: {
-    color: '#0B1224',
+    color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '800',
   },
   disclaimer: {
-    color: '#64748B',
+    color: 'rgba(255, 255, 255, 0.8)',
     marginTop: 16,
     fontSize: 13,
     lineHeight: 18,
